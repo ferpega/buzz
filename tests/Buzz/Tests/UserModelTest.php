@@ -74,14 +74,9 @@ class UserModelTest extends BaseTest{
             $items = $model->findAll();
             $count = count($items);
 
-            $post = $model->create(array("text"=>"test"));
-            $this->assertEquals("test", $post["text"]);
+            $items2 = $model->findAll();
+            $this->assertGreaterThan($count, count($items2));
 
-            if($post2 = $model->find($post["id"])){
-                $this->assertGreaterThan(0, $post2["id"]);
-            }else{
-                $this->assertTrue(false, "find post");
-            }
 
         }catch(\Exception $e){
             $this->assertTrue(false, $e->getMessage());

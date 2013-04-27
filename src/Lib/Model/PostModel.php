@@ -22,7 +22,7 @@ class PostModel{
     }
 
     function findAll(){
-        return $this->_conn->fetchAssoc('SELECT * FROM post as p ORDER BY p.created_at DESC');
+        return $this->_conn->fetchAll('SELECT * FROM post as p ORDER BY p.created_at DESC');
     }
 
 

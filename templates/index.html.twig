@@ -6,7 +6,7 @@
     {% if items %}
 
         {% for item in items %}
-            {% include 'posts/post-item.html.twig' with item %}
+            {% include 'posts/post-item.html.twig' with {item: item} %}
         {% endfor %}
 
     {% else %}

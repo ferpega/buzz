@@ -1,4 +1,5 @@
 <?php
+umask(0000);
 
 use Symfony\Component\ClassLoader\DebugClassLoader;
 use Symfony\Component\HttpKernel\Debug\ErrorHandler;
