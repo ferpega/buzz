@@ -21,4 +21,12 @@
 {% endblock %}
 
 
-
+{% block load_more %}
+    {% if items %}
+        <div class="row load_more">
+            <div class="small-4 small-offset-4 columns">
+                <button class="button small secondary small-12 " id="load_more">ver más</button>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
