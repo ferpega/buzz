@@ -20,16 +20,5 @@ $app['twig'] = $app->share($app->extend('twig', function($twig, $app) {
     return $twig;
 }));
 
-$app->register(new \Silex\Provider\DoctrineServiceProvider(), array(
-    'db.options' => array(
-        'driver'        => 'pdo_mysql',
-        'host'          => 'localhost',
-        'dbname'        => 'buzz',
-        'user'          => 'root',
-        'password'      => '4s3s1n0@',
-        'charset'       => 'utf8',
-        'driverOptions' => array(1002 => 'SET NAMES utf8',),
-    ),
-));
 
 return $app;

@@ -1,0 +1,19 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+
+
+    {% if items %}
+
+        {% for item in items %}
+            {% include 'posts/post-item.html.twig' with item %}
+        {% endfor %}
+
+    {% else %}
+
+    {% endif %}
+
+
+
+
+{% endblock %}

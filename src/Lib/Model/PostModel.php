@@ -21,6 +21,10 @@ class PostModel{
         return $this->_conn->fetchAssoc('SELECT * FROM post WHERE id = ?', array($id), array(\PDO::PARAM_INT));
     }
 
+    function findAll(){
+        return $this->_conn->fetchAssoc('SELECT * FROM post as p ORDER BY p.created_at DESC');
+    }
+
 
     function create($data){
         if($this->_conn->insert(static::TABLE, $data)){

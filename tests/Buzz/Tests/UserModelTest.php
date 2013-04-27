@@ -8,18 +8,10 @@
 
 namespace Buzz\Tests;
 use Lib\Model\PostModel;
-use Silex\WebTestCase;
 
-class UserModelTest extends WebTestCase{
-
+class UserModelTest extends BaseTest{
 
 
-
-    public function createApplication(){
-        $app = require __DIR__ . '/../../../src/app.php';
-        $app['debug'] = true;
-        return $app;
-    }
 //
     public function createModel(){
         $app = $this->createApplication();
@@ -49,6 +41,55 @@ class UserModelTest extends WebTestCase{
 
     }
 
+    public function testCreateAndFindPost(){
+
+        $model = $this->createModel();
+
+        try{
+
+            $post = $model->create(array("text"=>"test"));
+            $this->assertEquals("test", $post["text"]);
+
+            if($post2 = $model->find($post["id"])){
+                $this->assertEquals($post["id"], $post2["id"]);
+            }else{
+                $this->assertTrue(false, "find post");
+            }
+
+        }catch(\Exception $e){
+            $this->assertTrue(false, $e->getMessage());
+
+        }
+
+
+    }
+
+
+    public function testCreateAndFindAll(){
+
+        $model = $this->createModel();
+
+        try{
+
+            $items = $model->findAll();
+            $count = count($items);
+
+            $post = $model->create(array("text"=>"test"));
+            $this->assertEquals("test", $post["text"]);
+
+            if($post2 = $model->find($post["id"])){
+                $this->assertGreaterThan(0, $post2["id"]);
+            }else{
+                $this->assertTrue(false, "find post");
+            }
+
+        }catch(\Exception $e){
+            $this->assertTrue(false, $e->getMessage());
+
+        }
+
+
+    }
 
     public function testCreateUpdateAndDeletePost(){
 
