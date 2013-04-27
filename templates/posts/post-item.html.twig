@@ -1,10 +1,15 @@
-<div class="row post">
-    <div class="small-2 columns">
-        <a class="th" href="">
-            <img src=""/>
-        </a>
+<article>
+    <div class="row post">
+
+        <div class="small-2 columns">
+            <a class="th" href="">
+                <img src="/img/default.gif"/>
+            </a>
+        </div>
+        <div class="small-10 columns">
+            <p class="text">{{ item.text }}</p>
+            <p class="meta">publicado el {{ item.created_at|date("d-m-Y \\a \\l\\a\\s g:ia") }} por un simpático anónimo</p>
+        </div>
+
     </div>
-    <div class="small-10 columns">
-        {{ item.text }}
-    </div>
-</div>
+</article>

@@ -74,6 +74,8 @@ class UserModelTest extends BaseTest{
             $items = $model->findAll();
             $count = count($items);
 
+            $post = $model->create(array("text"=>"test"));
+
             $items2 = $model->findAll();
             $this->assertGreaterThan($count, count($items2));
 
@@ -86,6 +88,32 @@ class UserModelTest extends BaseTest{
 
     }
 
+
+    public function testFindAllWithLimit(){
+
+        $model = $this->createModel();
+
+        try{
+
+            for($i=0;$i<40;$i++){
+                $model->create(array("text"=>"test " . $i));
+            }
+
+
+            $items = $model->findAll(array(), array(), 20);
+            $this->assertEquals(20, count($items));
+
+            $items = $model->findAll(array(), array(), 5, 10);
+            $this->assertEquals(5, count($items));
+
+
+        }catch(\Exception $e){
+            $this->assertTrue(false, $e->getMessage());
+
+        }
+
+
+    }
     public function testCreateUpdateAndDeletePost(){
 
         $model = $this->createModel();
