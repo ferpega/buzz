@@ -19,6 +19,32 @@ $app->get('/', function () use ($app) {
 })->bind('homepage');
 
 /**
+ * POST_CREATE
+ */
+$app->get('/list.{format}', function ($format, \Symfony\Component\HttpFoundation\Request $request) use ($app) {
+
+    $model = new \Lib\Model\PostModel($app["db"]);
+
+    $items = $model->findAll( array(), array("created_at"=>"DESC"), $request->get("limit"), $request->get("offset"));
+    switch($format){
+        case 'rss':
+            return $app['twig']->render('posts/'.$format.'.xml.twig', array("items"=> $items));
+        break;
+
+        case "json":
+            return $app->json($items);
+        break;
+
+        default:
+            return $app->abort(406, "Noooooooooooooooooooooo, formato no aceptado!");
+
+
+    }
+})
+->method("GET")
+->bind('list_posts');
+
+/**
  * POSTS
  * =====
  */
@@ -36,6 +62,9 @@ $app->get('/', function (\Symfony\Component\HttpFoundation\Request $request) use
 })
 ->method("POST")
 ->bind('post_create');
+
+
+
 
 $app->error(function (\Exception $e, $code) use ($app) {
     if ($app['debug']) {

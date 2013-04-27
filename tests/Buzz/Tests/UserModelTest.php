@@ -96,7 +96,7 @@ class UserModelTest extends BaseTest{
         try{
 
             for($i=0;$i<40;$i++){
-                $model->create(array("text"=>"test " . $i));
+                $model->create(array("text"=> ("test " . $i) ));
             }
 
 
