@@ -6,7 +6,9 @@
     {% if items %}
 
         {% for item in items %}
-            {% include 'posts/post-item.html.twig' with {item: item} %}
+
+            {% include 'posts/post-item.html.twig' with {text: item.text,
+                                                         date: item.created_at|date("d-m-Y \\a \\l\\a\\s g:ia")} %}
         {% endfor %}
 
     {% else %}
@@ -17,3 +19,6 @@
 
 
 {% endblock %}
+
+
+

@@ -51,10 +51,10 @@ class PostModel{
 
         if($limit){
             $sql .= ' LIMIT :offset, :limit;';
-            $params["limit"]        = $limit;
-            $param_filters["limit"] = \PDO::PARAM_INT;
-            $params["offset"]        = $offset;
-            $param_filters["offset"] = \PDO::PARAM_INT;
+            $params["limit"]        = (int) $limit;
+            $param_filters["limit"] = "integer";
+            $params["offset"]        = (int) $offset;
+            $param_filters["offset"] = "integer";
         }
 
         $stmt = $this->_conn->prepare($sql);
