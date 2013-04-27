@@ -1,23 +1,29 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>{% block title '' %} - My Silex Application</title>
+        <title>{% block title 'Danos feedback!' %} - Buzz</title>
 
-        <link href="{{ app.request.basepath }}/css/main.css" rel="stylesheet" type="text/css" />
+        <link href="{{ app.request.basepath }}/css/foundation.min.css" rel="stylesheet" type="text/css" />
 
-        <script type="text/javascript">
-            var _gaq = _gaq || [];
-            _gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
-            _gaq.push(['_trackPageview']);
-
-            (function() {
-                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-            })();
-        </script>
     </head>
     <body>
-        {% block content %}{% endblock %}
+
+        <div class="row">
+            <div class="large-12 columns">
+                <h1>Buzz</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="large-8 small-12 columns">
+                {% block content %}{% endblock %}
+            </div>
+            <div class="large-4 small-12 columns">
+                
+            </div>
+        </div>
+
+
+
     </body>
 </html>
