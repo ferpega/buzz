@@ -13,7 +13,7 @@ $app->get('/', function () use ($app) {
 
     $model = new \Lib\Model\PostModel($app["db"]);
 
-    return $app['twig']->render('index.html.twig', array("items"=> $model->findAll(array(),array("created_at"=>"DESC"), 2)));
+    return $app['twig']->render('index.html.twig', array("items"=> $model->findAll(array(),array("created_at"=>"DESC"), 20)));
 
 
 })->bind('homepage');

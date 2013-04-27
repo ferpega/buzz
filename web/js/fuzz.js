@@ -9,7 +9,7 @@ $(document).ready(function(){
         $("#load_more").click(function(){
             var self = this;
             $(self).html("cargando...");
-            $.getJSON(window.ajax_url, {limit: 10, offset: $(".row.post").length }, function(data){
+            $.getJSON(window.ajax_url, {limit: 20, offset: $(".row.post").length }, function(data){
                 if(data.length){
 
 
