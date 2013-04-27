@@ -7,7 +7,7 @@
 
         {% for item in items %}
 
-            {% include 'posts/post-item.html.twig' with {text: item.text,
+            {% include 'posts/post-item.html.twig' with {text: item.text|nl2br ,
                                                          date: item.created_at|date("d-m-Y \\a \\l\\a\\s g:ia")} %}
         {% endfor %}
 
