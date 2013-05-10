@@ -33,7 +33,7 @@ class PostModel{
 
         $params = $param_filters = array();
 
-        $sql = 'SELECT * FROM post as p';
+        $sql = 'SELECT p.*, u.username FROM post as p LEFT JOIN user as u on u.twitter_id = p.user_id';
 
         $where = false;
         if(count($criteria)){

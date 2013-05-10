@@ -1,10 +1,20 @@
 <form action="{{ path("post_create") }}" method="post">
     <div class="row">
-        <div class="large-12 columns">
-            <textarea name="text" placeholder="escribe 'lo que quieras'"></textarea>
+        <div class="small-12 columns">
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <div class="alert-box success">Cuéntanos algo, {{ app.security.getToken().getUser().username }}!</div>
+            {% endif %}
+            <textarea name="text" placeholder="escribe lo que te apetezca!" required="required"></textarea>
         </div>
-        <div class="large-4 columns large-offset-8">
-            <button class="button small small-12 secondary" type="submit">enviar</button>
+    </div>
+    <div class="row">
+        <div class="small-8 columns username">
+
+        </div>
+        <div class="small-4 columns">
+            <button class="button small small-12 secondary" type="submit">
+                enviar
+            </button>
         </div>
     </div>
 </form>

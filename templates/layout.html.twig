@@ -3,6 +3,9 @@
     <head>
         <title>{% block title 'Danos feedback!' %} - Buzz</title>
 
+        <meta name="viewport" content="width=device-width" />
+
+
         <link href="{{ app.request.basepath }}/css/foundation.min.css" rel="stylesheet" type="text/css" />
         <link href="{{ app.request.basepath }}/css/style.css" rel="stylesheet" type="text/css" />
         <link rel="alternate" type="application/rss+xml" title="BUZZ Feed" href="{{ path("list_posts", {format: "rss"}) }}" />
@@ -39,10 +42,18 @@
 
             </div>
             <div class="large-4 small-12 columns">
+                {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+                <p>
+                    <a href="{{ path("twitter_auth") }}">
+                        <img src="https://dev.twitter.com/sites/default/files/images_documentation/sign-in-with-twitter-gray.png">
+                    </a>
+                </p>
+                {% endif %}
                 <div class="panel hide-for-small">
                     <h4>Buzz, baby buzz!</h4>
+                    
                     <p>
-                        Desarrollado con <a href="http://silex.sensiolabs.com" target="_blank">Silex</a><br/>
+                        Desarrollado con <a href="http://silex.sensiolabs.org" target="_blank">Silex</a><br/>
                         <small><a href="https://github.com/asiermarques/buzz" target="_blank">ver en github</a></small>
                     </p>
                 </div>

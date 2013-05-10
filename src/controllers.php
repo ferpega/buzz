@@ -24,13 +24,15 @@ $app->get('/', function () use ($app) {
 $app->get('/', function (\Symfony\Component\HttpFoundation\Request $request) use ($app) {
 
     $model = new \Lib\Model\PostModel($app["db"]);
-    $model->create(array("text"=>$request->get("text")));
+
+    $user_id = $app["security"]->getToken() ? $app["security"]->getToken()->getUser()->twitter_id : null;
+
+    $model->create(array("text"=>$request->get("text"), "user_id"=>$user_id));
 
     return $app->redirect($request->headers->get('referer'));
 
-})
-    ->method("POST")
-    ->bind('post_create');
+})->method("POST")
+  ->bind('post_create');
 
 
 
@@ -67,6 +69,7 @@ $app->get('/post_template.html', function (\Symfony\Component\HttpFoundation\Req
 })->method("GET")->bind('post_template');
 
 
+$app["twitter"]->setControllers();
 
 
 

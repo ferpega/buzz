@@ -15,7 +15,7 @@ $(document).ready(function(){
 
                     for(i in data){
                         var item = data[i];
-                        $("#post_list").append(compiledTemplate({text: item.text, date: item.created_at}));
+                        $("#post_list").append(compiledTemplate({text: item.text.replace("\n","<br />"), date: item.created_at}));
                     }
                     $(self).html("cargar más!");
                 }else{

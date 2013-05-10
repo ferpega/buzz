@@ -1,0 +1,7 @@
+<?php
+
+$app["config.twitter_options"] = array(
+    'twitter.consumer_key'    => '',
+    'twitter.consumer_secret' => '',
+    'twitter.callback_url'    => 'http://buzz.simettric.com/twitter-listener',
+);

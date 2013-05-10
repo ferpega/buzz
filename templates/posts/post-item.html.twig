@@ -2,13 +2,13 @@
     <div class="row post">
 
         <div class="small-2 columns">
-            <a class="th" href="">
+            <a target="_blank" class="th" href="{% if not username %}#{% else %} http://twitter.com/{{ username }}{% endif %}">
                 <img src="/img/default.gif"/>
             </a>
         </div>
         <div class="small-10 columns">
             <p class="text">{{text}}</p>
-            <p class="meta">publicado el {{date}} por un simpático anónimo</p>
+            <p class="meta">publicado el {{date}} por <span class="label secondary">{% if not username %} un simpático anónimo {% else %} {{ username }} {% endif %}</span></p>
         </div>
 
     </div>
