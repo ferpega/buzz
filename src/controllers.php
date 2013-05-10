@@ -50,6 +50,10 @@ $app->get('/list.{format}', function ($format, \Symfony\Component\HttpFoundation
             return $app->json($items);
         break;
 
+        case "html":
+            return $app['twig']->render('posts/list.html.twig', array("items"=> $items));
+        break;
+
         default:
             return $app->abort(406, "Noooooooooooooooooooooo, formato no aceptado!");
 
@@ -58,15 +62,6 @@ $app->get('/list.{format}', function ($format, \Symfony\Component\HttpFoundation
 })
 ->method("GET")
 ->bind('list_posts');
-
-
-
-
-$app->get('/post_template.html', function (\Symfony\Component\HttpFoundation\Request $request) use ($app) {
-
-    return new \Symfony\Component\HttpFoundation\Response( file_get_contents(__DIR__ . "/../templates/posts/post-item.html.twig") );
-
-})->method("GET")->bind('post_template');
 
 
 $app["twitter"]->setControllers();

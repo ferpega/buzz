@@ -6,10 +6,7 @@
     {% if items %}
 
         {% for item in items %}
-
-            {% include 'posts/post-item.html.twig' with {text: item.text|nl2br ,
-                                                         username: item.username,
-                                                         date: item.created_at|date("d-m-Y \\a \\l\\a\\s g:ia")} %}
+            {% include 'posts/post-item.html.twig'%}
         {% endfor %}
 
     {% else %}

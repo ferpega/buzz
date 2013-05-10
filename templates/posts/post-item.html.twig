@@ -1,14 +1,17 @@
 <article>
     <div class="row post">
 
-        <div class="small-2 columns">
-            <a target="_blank" class="th" href="{% if not username %}#{% else %} http://twitter.com/{{ username }}{% endif %}">
-                <img src="/img/default.gif"/>
-            </a>
-        </div>
-        <div class="small-10 columns">
-            <p class="text">{{text}}</p>
-            <p class="meta">publicado el {{date}} por <span class="label secondary">{% if not username %} un simpático anónimo {% else %} {{ username }} {% endif %}</span></p>
+
+        <div class="small-12 columns">
+
+            <p class="text">
+                <a class="author" target="_blank" href="{% if not item.username %}#{% else %} http://twitter.com/{{ item.username }}{% endif %}">
+                    <img src="{% if item.avatar_url %} {{ item.avatar_url }} {% else %}/img/default.gif{% endif %}"/> &nbsp;
+                    <strong class="label secondary">{% if not item.username %} Un simpático anónimo {% else %} @{{ item.username }} {% endif %}</strong>
+                </a> &nbsp;
+                {{item.text|nl2br}}
+            </p>
+            <p class="meta">publicado el {{item.created_at|date("d-m-Y \\a \\l\\a\\s g:ia")}}</p>
         </div>
 
     </div>

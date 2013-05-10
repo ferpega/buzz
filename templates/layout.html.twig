@@ -61,13 +61,11 @@
         </div>
 
         <script type="text/javascript" src="/js/vendor/jquery.js"></script>
-        <script type="text/javascript" src="/js/vendor/moustache.js"></script>
         <script type="text/javascript" src="/js/fuzz.js"></script>
         {% block js %}
 
             <script type="text/javascript">
-                var ajax_url     = "{{ path("list_posts", {format: "json"}) }}";
-                var template_url = "{{ path("post_template") }}";
+                var ajax_url     = "{{ path("list_posts", {format: "html"}) }}";
             </script>
 
         {% endblock %}
