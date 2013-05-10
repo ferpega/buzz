@@ -25,7 +25,12 @@ $app->get('/', function (\Symfony\Component\HttpFoundation\Request $request) use
 
     $model = new \Lib\Model\PostModel($app["db"]);
 
-    $user_id = $app["security"]->getToken() ? $app["security"]->getToken()->getUser()->twitter_id : null;
+    $user = null;
+    if($app["security"]->getToken()){
+        $user = $app["security"]->getToken()->getUser();
+    }
+
+    $user_id = $user instanceof \Simettric\Silex\TwitterServiceProvider\Lib\User\User ? $user->twitter_id : null;
 
     $model->create(array("text"=>$request->get("text"), "user_id"=>$user_id));
 
