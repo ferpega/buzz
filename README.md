@@ -1,3 +1,5 @@
+
+
 ## BUZZ
 
 Buzz es un proyecto demo de una aplicación web basada Silex.
@@ -15,7 +17,7 @@ La aplicación es un muro de comentarios tipo Twitter, con autenticación de ese
 6. Apuntar el directorio público del servidor web a /web
 
 
-
+7.-
 
 
 ## Licencia
